@@ -1,4 +1,32 @@
 GIT
+  remote: git://github.com/owen2345/cama_subscriber.git
+  revision: 83e477ebd16a42c860043bc9cbe52c20ca593a22
+  specs:
+    cama_subscriber (0.0.1)
+      rails
+
+GIT
+  remote: git://github.com/owen2345/camaleon-cms.git
+  revision: 6ae7c4307d2c1ca1c8fe16e6133780eb1c154e83
+  specs:
+    camaleon_cms (2.3.3)
+      aws-sdk (~> 2)
+      bcrypt
+      breadcrumbs_on_rails
+      cama_contact_form (~> 0.0.11)
+      cancancan (~> 1.10)
+      coffee-rails
+      draper (>= 1.3)
+      font-awesome-rails
+      jquery-rails
+      meta-tags (~> 2.0)
+      mini_magick
+      sass-rails
+      tinymce-rails (~> 4.3)
+      will_paginate
+      will_paginate-bootstrap
+
+GIT
   remote: git://github.com/owen2345/camaleon-ecommerce.git
   revision: 9078f600ed2cc2e93adfaeb80986a8c085030ed9
   specs:
@@ -17,6 +45,12 @@ GIT
       activerecord (> 5.x)
       activesupport (> 5.x)
       builder (~> 3.1)
+
+PATH
+  remote: vendor/plugins/gallery
+  specs:
+    gallery (0.0.1)
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -64,31 +98,18 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.1)
-    aws-sdk (2.5.6)
-      aws-sdk-resources (= 2.5.6)
-    aws-sdk-core (2.5.6)
+    aws-sdk (2.5.8)
+      aws-sdk-resources (= 2.5.8)
+    aws-sdk-core (2.5.8)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.6)
-      aws-sdk-core (= 2.5.6)
+    aws-sdk-resources (2.5.8)
+      aws-sdk-core (= 2.5.8)
     bcrypt (3.1.11)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.2)
     byebug (9.0.5)
-    cama_contact_form (0.0.11)
+    cama_contact_form (0.0.12)
       rails
-    camaleon_cms (2.3.3)
-      aws-sdk (~> 2)
-      bcrypt
-      breadcrumbs_on_rails
-      cama_contact_form (~> 0.0.11)
-      cancancan (~> 1.10)
-      draper (>= 1.3)
-      font-awesome-rails
-      meta-tags (~> 2.0)
-      mini_magick
-      tinymce-rails (~> 4.3)
-      will_paginate
-      will_paginate-bootstrap
     cancancan (1.15.0)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -108,6 +129,10 @@ GEM
     debug_inspector (0.0.2)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -217,7 +242,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    tinymce-rails (4.4.1)
+    tinymce-rails (4.4.2)
       railties (>= 3.1.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
@@ -248,9 +273,12 @@ PLATFORMS
 DEPENDENCIES
   activemodel-serializers-xml!
   byebug
-  camaleon_cms (>= 2.3.3)
+  cama_subscriber!
+  camaleon_cms!
   camaleon_ecommerce!
   coffee-rails (~> 4.2)
+  dotenv-rails
+  gallery!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

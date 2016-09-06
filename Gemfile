@@ -27,9 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem "camaleon_cms",  '>=2.3.3'
+gem 'dotenv-rails'
+gem "camaleon_cms",  github: 'owen2345/camaleon-cms'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'camaleon_ecommerce', github: 'owen2345/camaleon-ecommerce'
+gem 'gallery', path: 'vendor/plugins/gallery'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

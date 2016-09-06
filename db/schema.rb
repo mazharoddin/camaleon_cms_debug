@@ -243,6 +243,25 @@ ActiveRecord::Schema.define(version: 20160825232739) do
     t.index ["qty"], name: "index_plugins_ecommerce_products_on_qty"
   end
 
+  create_table "plugins_gallery_galleries", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.integer  "parent_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["parent_id"], name: "index_plugins_gallery_galleries_on_parent_id"
+  end
+
+  create_table "plugins_gallery_photos", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.string   "image"
+    t.integer  "gallery_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["gallery_id"], name: "index_plugins_gallery_photos_on_gallery_id"
+  end
+
   create_table "plugins_order_details", force: :cascade do |t|
     t.integer  "order_id"
     t.string   "customer"
@@ -254,6 +273,76 @@ ActiveRecord::Schema.define(version: 20160825232739) do
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "plugins_subscriber_group_items", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "item_id"
+    t.string   "status",     default: "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["group_id"], name: "index_plugins_subscriber_group_items_on_group_id"
+    t.index ["item_id"], name: "index_plugins_subscriber_group_items_on_item_id"
+  end
+
+  create_table "plugins_subscriber_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.boolean  "send_welcome"
+    t.string   "welcome_subject"
+    t.text     "welcome_msg"
+    t.boolean  "send_left_group"
+    t.string   "left_subject"
+    t.text     "left_msg"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["site_id"], name: "index_plugins_subscriber_groups_on_site_id"
+  end
+
+  create_table "plugins_subscriber_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "status",          default: "approved"
+    t.datetime "unsubscribed_at"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["site_id"], name: "index_plugins_subscriber_items_on_site_id"
+  end
+
+  create_table "plugins_subscriber_promotion_groups", force: :cascade do |t|
+    t.integer "promotion_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_plugins_subscriber_promotion_groups_on_group_id"
+    t.index ["promotion_id"], name: "index_plugins_subscriber_promotion_groups_on_promotion_id"
+  end
+
+  create_table "plugins_subscriber_promotion_items", force: :cascade do |t|
+    t.integer  "promotion_id"
+    t.integer  "item_id"
+    t.integer  "qty_opened",   default: 0
+    t.string   "status",       default: "pending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["item_id"], name: "index_plugins_subscriber_promotion_items_on_item_id"
+    t.index ["promotion_id"], name: "index_plugins_subscriber_promotion_items_on_promotion_id"
+  end
+
+  create_table "plugins_subscriber_promotions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.string   "layout"
+    t.string   "template"
+    t.string   "email_from"
+    t.string   "email_cc"
+    t.string   "subject"
+    t.text     "content"
+    t.string   "status",     default: "pending"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["site_id"], name: "index_plugins_subscriber_promotions_on_site_id"
   end
 
 end
